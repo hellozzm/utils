@@ -1,11 +1,13 @@
 {
-  "name": "utils",
+  "name": "@hellozzm/utils",
   "version": "1.0.0",
   "description": "Front-end tool library",
-  "main": "index.js",
+  "main": "./dist/index.umd.min.js",
+  "module": "./dist/index.esm.js",
+  "unpkg": "./dist/index.js",
   "scripts": {
     "dev": "rollup -w --environment NODE_ENV:development -c scripts/rollup.config.dev.mjs",
-    "build": "rollup -w --environment NODE_ENV:development -c scripts/rollup.config.prod.mjs",
+    "build": "rollup --environment NODE_ENV:development -c scripts/rollup.config.prod.mjs",
     "test": "jest",
     "test:c": "jest --coverage",
     "lint": "eslint .",
@@ -15,7 +17,9 @@
     "major": "npm version major && npm run build",
     "minor": "npm version minor && npm run build",
     "patch": "npm version patch && npm run build",
-    "pub": "npm run build && npm publish --access=public"
+    "pub:major": "npm run major && npm run build && npm publish --access=public",
+    "pub:minor": "npm run minor && npm run build && npm publish --access=public",
+    "pub:patch": "npm run patch && npm run build && npm publish --access=public"
   },
   "keywords": [],
   "author": "hellozzm",
@@ -43,5 +47,8 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "engines": {
+    "node": ">=18.16.0"
+  }
 }
